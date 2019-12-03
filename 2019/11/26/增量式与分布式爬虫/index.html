@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="分布式爬虫redis安装 用户自定义目录，也就是你想安装的位置，新建一个文件夹，注意你的路径里不要有中文 将redis-x64-3.2.100.zip压缩包  解压到你当前新建的文件夹里 将解压的文件的路径复制 并 配置到环境变量中 右击此电脑点击属性找到高级设置，然后点环境变量—系统变量—双击path—新建–粘贴路径即可  分布式 分布式爬虫  多台服务器机群，共同爬取数据 适用于数据量较大 提">
+<meta property="og:type" content="article">
+<meta property="og:title" content="增量式与分布式爬虫">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;26&#x2F;%E5%A2%9E%E9%87%8F%E5%BC%8F%E4%B8%8E%E5%88%86%E5%B8%83%E5%BC%8F%E7%88%AC%E8%99%AB&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="分布式爬虫redis安装 用户自定义目录，也就是你想安装的位置，新建一个文件夹，注意你的路径里不要有中文 将redis-x64-3.2.100.zip压缩包  解压到你当前新建的文件夹里 将解压的文件的路径复制 并 配置到环境变量中 右击此电脑点击属性找到高级设置，然后点环境变量—系统变量—双击path—新建–粘贴路径即可  分布式 分布式爬虫  多台服务器机群，共同爬取数据 适用于数据量较大 提">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191108171234369.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191108165953374.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2x4cF9tb2NoZW5n,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191108170214444.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2x4cF9tb2NoZW5n,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191108170701698.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2x4cF9tb2NoZW5n,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191108171004369.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191108175610739.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2x4cF9tb2NoZW5n,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019110817555792.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2x4cF9tb2NoZW5n,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-12-03T09:11:27.563Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191108171234369.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/26/增量式与分布式爬虫/"/>
+
+
+
+
+
+  <title>增量式与分布式爬虫 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Mr.刘</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/26/%E5%A2%9E%E9%87%8F%E5%BC%8F%E4%B8%8E%E5%88%86%E5%B8%83%E5%BC%8F%E7%88%AC%E8%99%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mr.刘">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">增量式与分布式爬虫</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-26T17:19:23+08:00">
+                2019-11-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="分布式爬虫"><a href="#分布式爬虫" class="headerlink" title="分布式爬虫"></a>分布式爬虫</h1><h2 id="redis安装"><a href="#redis安装" class="headerlink" title="redis安装"></a>redis安装</h2><ul>
+<li>用户自定义目录，也就是你想安装的位置，新建一个文件夹，注意你的路径里不要有中文</li>
+<li>将redis-x64-3.2.100.zip压缩包  解压到你当前新建的文件夹里</li>
+<li>将解压的文件的路径复制 并 配置到环境变量中</li>
+<li>右击此电脑点击属性找到高级设置，然后点环境变量—系统变量—双击path—新建–粘贴路径即可</li>
+</ul>
+<h2 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h2><ul>
+<li><p>分布式爬虫</p>
+<ul>
+<li>多台服务器机群，共同爬取数据</li>
+<li>适用于数据量较大</li>
+<li>提高了成本</li>
+</ul>
+</li>
+<li><p>原生scrapy 不能实现分布式，要通过scrapy-redis</p>
+<ul>
+<li>scrapy-redis提供了共享的调度器</li>
+<li>scrapy-redis提供了共享的管道</li>
+</ul>
+</li>
+<li><p>使用scrapy实现分布式的思路</p>
+<ul>
+<li>为原生的scrapy框架提供共享的管道和调度器</li>
+<li>pip install scrapy-redis</li>
+</ul>
+</li>
+<li><p>配置及创建项目</p>
+<ul>
+<li><p>创建工程</p>
+<ul>
+<li>scrapy startproject projectname</li>
+</ul>
+</li>
+<li><p>爬虫文件</p>
+<ul>
+<li>scrapy genspider -t crawl spidername <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a></li>
+</ul>
+</li>
+<li><p>修改爬虫文件</p>
+<ul>
+<li>导包：from scrapy_redis.spiders import RedisCrawlSpider</li>
+<li>将当前爬虫类的父类进行修改RedisCrawlSpider</li>
+<li>allowed_demains,start_urls 注释掉，添加一个新属性redis_key=”qn”(调度器队列的名称)</li>
+<li>指定redis_key = ‘xxx’，即共享调度器队列名字</li>
+<li>lpush xxx url</li>
+<li>数据解析：将解析的数据封装到item中然后向管道提交</li>
+</ul>
+</li>
+<li><p>配置文件的编写</p>
+<ul>
+<li><p>指定管道</p>
+</li>
+<li><pre><code class="Python">ITEM_PIPELINES = {
+   <span class="string">'scrapy_redis.pipelines.RedisPipeline'</span>: <span class="number">400</span>,
+}
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 指定调度器</span><br><span class="line"></span><br><span class="line">  ```python</span><br><span class="line">  # 增加了一个去重容器类的配置，作用使用redis的set集合来存储请求的指纹数据，从而实现请求去重的持久化</span><br><span class="line">  DUPEFILTER_CLASS = &quot;scrapy_redis.dupefilter.RFPDupeFilter&quot;</span><br><span class="line">  # 使用scrapy-redis组件自己的调度器</span><br><span class="line">  SCHEDULER = &quot;scrapy_redis.scheduler.Scheduler&quot;</span><br><span class="line">  # 配置调度器是否要持久化，也就是当爬虫结束了，要不要清空redis中请求队列和去重指纹的set，如果是True，就表示要持久化存储，就不清空数据，否则清空数据</span><br><span class="line">  SCHEDULER_PERSIST = True</span><br></pre></td></tr></table></figure></code></pre>
+</li>
+<li><p>指定具体的redis</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">REDIS_HOST = <span class="string">'redis服务器的ip地址'</span></span><br><span class="line">REDIS_PORT = <span class="number">6379</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改redis配置并指定配置启动</p>
+<ul>
+<li><h5 id="bind-127-0-0-1"><a href="#bind-127-0-0-1" class="headerlink" title="bind 127.0.0.1"></a>bind 127.0.0.1</h5></li>
+<li><p>protected-mode no</p>
+</li>
+<li><p>开启redis服务（携带redis的配置文件：redis-server ./redis.window.conf）和客户端（redis-cli）</p>
+</li>
+</ul>
+</li>
+<li><p>启动程序：scrapy runspider xxx.py(需要进入spider文件夹)</p>
+</li>
+<li><p>向调度器队列中扔入一个起始的url（redis的客户端）：lpush xxx <a href="http://www.xxx.com" target="_blank" rel="noopener">www.xxx.com</a>   （xxx表示的就是redis_key的值）</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20191108171234369.png" alt="在这里插入图片描述"></p>
+<h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><ul>
+<li><p>爬虫文件中</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"><span class="keyword">from</span> scrapy.linkextractors <span class="keyword">import</span> LinkExtractor</span><br><span class="line"><span class="keyword">from</span> scrapy.spiders <span class="keyword">import</span> CrawlSpider, Rule</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> scrapy_redis.spiders <span class="keyword">import</span> RedisCrawlSpider</span><br><span class="line"><span class="keyword">from</span> fbsspider.items <span class="keyword">import</span> FbsspiderItem</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SunaskSpider</span><span class="params">(RedisCrawlSpider)</span>:</span></span><br><span class="line">    <span class="comment"># 爬虫名虽然运行时不再使用，但是不能删（******）</span></span><br><span class="line">    name = <span class="string">'sunask'</span></span><br><span class="line">    <span class="comment"># allowed_domains = ['baidu.com']</span></span><br><span class="line">    <span class="comment"># start_urls = ['http://baidu.com/']</span></span><br><span class="line">    <span class="comment"># 共享调度器</span></span><br><span class="line">    redis_key = <span class="string">'sch'</span></span><br><span class="line">    <span class="comment"># http: // wz.sun0769.com / index.php / question / questionType?type = 4 &amp; page = 30</span></span><br><span class="line">    link = LinkExtractor(allow=<span class="string">r'http://wz.sun0769.com.*?page=\d+'</span>)</span><br><span class="line">    rules = (</span><br><span class="line">        Rule(link, callback=<span class="string">'parse_item'</span>, follow=<span class="literal">True</span>),</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse_item</span><span class="params">(self, response)</span>:</span></span><br><span class="line">        title_list = response.xpath(<span class="string">'//a[@class="news14"]/@title'</span>).extract()</span><br><span class="line">        <span class="keyword">for</span> title <span class="keyword">in</span> title_list:</span><br><span class="line">            <span class="keyword">yield</span> FbsspiderItem(title=title)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>settings配置 就用上面笔记的复制粘贴就好了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">共享管道</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">ITEM_PIPELINES = &#123;</span><br><span class="line">   <span class="comment"># 'fbsspider.pipelines.FbsspiderPipeline': 300,</span></span><br><span class="line">    <span class="string">'scrapy_redis.pipelines.RedisPipeline'</span>: <span class="number">400</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 增加了一个去重容器类的配置，作用使用redis的set集合来存储请求的指纹数据，从而实现请求去重的持久化</span></span><br><span class="line">DUPEFILTER_CLASS = <span class="string">"scrapy_redis.dupefilter.RFPDupeFilter"</span></span><br><span class="line"><span class="comment"># 使用scrapy-redis组件自己的调度器</span></span><br><span class="line">SCHEDULER = <span class="string">"scrapy_redis.scheduler.Scheduler"</span></span><br><span class="line"><span class="comment"># 配置调度器是否要持久化，也就是当爬虫结束了，要不要清空redis中请求队列和去重指纹的set，如果是True，就表示要持久化存储，就不清空数据，否则清空数据</span></span><br><span class="line">SCHEDULER_PERSIST = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置redis数据库</span></span><br><span class="line">REDIS_HOST = <span class="string">'192.168.43.29'</span></span><br><span class="line">REDIS_PORT = <span class="number">6379</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>scrapy runspider sunask.py 启动服务时需要注意一下操作,完成一下操作服务 才会执行  爬取流程<br><img src="https://img-blog.csdnimg.cn/20191108165953374.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2x4cF9tb2NoZW5n,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20191108170214444.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2x4cF9tb2NoZW5n,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20191108170701698.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2x4cF9tb2NoZW5n,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+</li>
+</ul>
+<h1 id="小插曲"><a href="#小插曲" class="headerlink" title="小插曲"></a>小插曲</h1><ul>
+<li>框架开启多线程在settings中 打开这个即可<br><img src="https://img-blog.csdnimg.cn/20191108171004369.png" alt="在这里插入图片描述"></li>
+</ul>
+<h1 id="增量式爬虫"><a href="#增量式爬虫" class="headerlink" title="增量式爬虫"></a>增量式爬虫</h1><ul>
+<li><h1 id="基于url"><a href="#基于url" class="headerlink" title="基于url"></a>基于url</h1></li>
+<li>测试，提供一个思路<img src="https://img-blog.csdnimg.cn/20191108175610739.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2x4cF9tb2NoZW5n,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/2019110817555792.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2x4cF9tb2NoZW5n,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ul>
+<h3 id="代码演示-1"><a href="#代码演示-1" class="headerlink" title="代码演示"></a>代码演示</h3><ul>
+<li><p>爬虫文件中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"><span class="keyword">from</span> redis <span class="keyword">import</span> Redis</span><br><span class="line"><span class="keyword">from</span> ..items <span class="keyword">import</span> MovieItem</span><br><span class="line">conn = Redis(<span class="string">'localhost'</span>,<span class="number">6379</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MvSpider</span><span class="params">(scrapy.Spider)</span>:</span></span><br><span class="line">    name = <span class="string">'mv'</span></span><br><span class="line">    <span class="comment"># allowed_domains = ['baidu.com']</span></span><br><span class="line">    start_urls = [<span class="string">'https://www.4567tv.tv/index.php?m=vod-list-id-5-pg-1-order--by-score-class--year--letter--area--lang-.html'</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></span><br><span class="line">        link_list = response.xpath(<span class="string">'//a[@class="stui-vodlist__thumb lazyload"]/@href'</span>).extract()</span><br><span class="line">        <span class="keyword">for</span> link <span class="keyword">in</span> link_list:</span><br><span class="line">            <span class="comment"># sadd返回结果是1和0，1代表成功，0代表失败</span></span><br><span class="line">            ret = conn.sadd(<span class="string">'link'</span>,link)</span><br><span class="line">            <span class="keyword">if</span> ret == <span class="number">1</span>:</span><br><span class="line">                print(<span class="string">'数据没爬过'</span>)</span><br><span class="line">                <span class="keyword">yield</span> scrapy.Request(url=<span class="string">'https://www.4567tv.tv'</span>+link,callback=self.detail_parse)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                print(<span class="string">'数据爬过了'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">detail_parse</span><span class="params">(self,response)</span>:</span></span><br><span class="line">        title = response.xpath(<span class="string">'//h1[@class="title"]/text()'</span>).extract_first()</span><br><span class="line">        typ = response.xpath(<span class="string">'//p[@class="data"][1]/a[1]/text()'</span>).extract_first()</span><br><span class="line">        localtion = response.xpath(<span class="string">'//p[@class="data"][1]/a[2]/text()'</span>).extract_first()</span><br><span class="line">        pro = response.xpath(<span class="string">'//span[@class="detail-sketch"]/text()'</span>).extract_first()</span><br><span class="line">        <span class="keyword">yield</span> MovieItem(title=title,typ=typ,localtion=localtion,pro=pro)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>item文件中</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MovieItem</span><span class="params">(scrapy.Item)</span>:</span></span><br><span class="line">    <span class="comment"># define the fields for your item here like:</span></span><br><span class="line">    title = scrapy.Field()</span><br><span class="line">    typ = scrapy.Field()</span><br><span class="line">    pro = scrapy.Field()</span><br><span class="line">    localtion = scrapy.Field()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>管道中</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymongo</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MoviePipeline</span><span class="params">(object)</span>:</span></span><br><span class="line">    conn = pymongo.MongoClient()</span><br><span class="line">    db = conn.movies</span><br><span class="line">    table = db.mv</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_item</span><span class="params">(self, item, spider)</span>:</span></span><br><span class="line">        self.table.insert_one(dict(item))</span><br><span class="line">        <span class="keyword">return</span> item</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>settings中将管道打开，ua打开，robots协议改为false即可</li>
+</ul>
+<h2 id="基于数据指纹"><a href="#基于数据指纹" class="headerlink" title="基于数据指纹"></a>基于数据指纹</h2><p>-爬虫文件中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">from</span> redis <span class="keyword">import</span> Redis</span><br><span class="line"><span class="keyword">from</span> ..items <span class="keyword">import</span> JokesItem</span><br><span class="line"></span><br><span class="line">conn = Redis(<span class="string">'localhost'</span>,<span class="number">6379</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">JkSpider</span><span class="params">(scrapy.Spider)</span>:</span></span><br><span class="line">    name = <span class="string">'jk'</span></span><br><span class="line">    <span class="comment"># allowed_domains = ['baidu.com']</span></span><br><span class="line">    start_urls = [<span class="string">'http://xiaohua.zol.com.cn/lengxiaohua/'</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></span><br><span class="line">        li_list = response.xpath(<span class="string">'//ul[@class="article-list"]/li'</span>)</span><br><span class="line">        <span class="keyword">for</span> li <span class="keyword">in</span> li_list:</span><br><span class="line">            title = li.xpath(<span class="string">'./span[2]/a/text()'</span>).extract_first()</span><br><span class="line">            content = <span class="string">''</span>.join(li.xpath(<span class="string">'./div[2]//text()'</span>).extract())</span><br><span class="line">            <span class="comment"># print('title:',title)</span></span><br><span class="line">            <span class="comment"># print('content:',content)</span></span><br><span class="line">            data = title + content</span><br><span class="line">            fp = hashlib.md5(data.encode(<span class="string">'utf-8'</span>)).hexdigest()</span><br><span class="line">            ret = conn.sadd(<span class="string">'fp'</span>,fp)</span><br><span class="line">            <span class="keyword">if</span> ret:</span><br><span class="line">                print(<span class="string">'没爬过'</span>)</span><br><span class="line">                <span class="keyword">yield</span>  JokesItem(title=title,content=content)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                print(<span class="string">'爬过了'</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>管道中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymongo</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">JokesPipeline</span><span class="params">(object)</span>:</span></span><br><span class="line">    conn = pymongo.MongoClient()</span><br><span class="line">    db = conn.jjj</span><br><span class="line">    table = db.kkk</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_item</span><span class="params">(self, item, spider)</span>:</span></span><br><span class="line">        self.table.insert_one(dict(item))</span><br><span class="line">        <span class="keyword">return</span> item</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>items中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">JokesItem</span><span class="params">(scrapy.Item)</span>:</span></span><br><span class="line">    <span class="comment"># define the fields for your item here like:</span></span><br><span class="line">    title = scrapy.Field()</span><br><span class="line">    content = scrapy.Field()</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/26/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/" rel="next" title="虚拟环境的安装和使用">
+                <i class="fa fa-chevron-left"></i> 虚拟环境的安装和使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/26/%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%AD%E9%97%B4%E4%BB%B6/" rel="prev" title="自定义中间件">
+                自定义中间件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Mr.刘" />
+          <p class="site-author-name" itemprop="name">Mr.刘</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式爬虫"><span class="nav-number">1.</span> <span class="nav-text">分布式爬虫</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#redis安装"><span class="nav-number">1.1.</span> <span class="nav-text">redis安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式"><span class="nav-number">1.2.</span> <span class="nav-text">分布式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#bind-127-0-0-1"><span class="nav-number">1.2.0.0.1.</span> <span class="nav-text">bind 127.0.0.1</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码演示"><span class="nav-number">1.3.</span> <span class="nav-text">代码演示</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小插曲"><span class="nav-number">2.</span> <span class="nav-text">小插曲</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#增量式爬虫"><span class="nav-number">3.</span> <span class="nav-text">增量式爬虫</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于url"><span class="nav-number">4.</span> <span class="nav-text">基于url</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码演示-1"><span class="nav-number">4.0.1.</span> <span class="nav-text">代码演示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于数据指纹"><span class="nav-number">4.1.</span> <span class="nav-text">基于数据指纹</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.刘</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
