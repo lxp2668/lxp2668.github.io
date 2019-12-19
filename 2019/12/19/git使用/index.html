@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="1.创建git版本库123451、版本库又名仓库，英文名repository，你可以简单理解成一个目录，2、这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便 	  任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。3、所以，创建一个版本库非常简单，首先，选择一个合适的地方，创建一个空目4、瞬间Git就把仓库建好了，而且告诉你是一个空的仓库（empty">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git使用">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;19&#x2F;git%E4%BD%BF%E7%94%A8&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.创建git版本库123451、版本库又名仓库，英文名repository，你可以简单理解成一个目录，2、这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便 	  任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。3、所以，创建一个版本库非常简单，首先，选择一个合适的地方，创建一个空目4、瞬间Git就把仓库建好了，而且告诉你是一个空的仓库（empty">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191219081420765.png">
+<meta property="og:updated_time" content="2019-12-19T03:44:18.417Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191219081420765.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/12/19/git使用/"/>
+
+
+
+
+
+  <title>git使用 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Mr.刘</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/git%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mr.刘">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">git使用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-19T10:55:11+08:00">
+                2019-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-创建git版本库"><a href="#1-创建git版本库" class="headerlink" title="1.创建git版本库"></a>1.创建git版本库</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、版本库又名仓库，英文名repository，你可以简单理解成一个目录，</span><br><span class="line"><span class="number">2</span>、这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便 	  任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。</span><br><span class="line"><span class="number">3</span>、所以，创建一个版本库非常简单，首先，选择一个合适的地方，创建一个空目</span><br><span class="line"><span class="number">4</span>、瞬间Git就把仓库建好了，而且告诉你是一个空的仓库（empty Git repository）</span><br><span class="line"><span class="number">5</span>、细心的读者可以发现当前目录下多了一个.git的目录，这个目录是Git来跟踪管理版本库的，没    事千万不要手动修改这个目录里面的文件，不然改乱了，就把Git仓库给破坏了。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir s15_gitpro                 <span class="comment">#先创建一个项目</span></span><br><span class="line">cd s15_gitpro/                   <span class="comment">#切换到这个项目目录</span></span><br><span class="line">git init                         <span class="comment">#初始化这个</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-工作区、暂存区、代码仓库"><a href="#2-工作区、暂存区、代码仓库" class="headerlink" title="2.工作区、暂存区、代码仓库"></a>2.工作区、暂存区、代码仓库</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、工作区： 就是你在电脑上看到的目录，比如目录下testgit里的文件(.git隐藏目录版本库除外)。</span><br><span class="line"><span class="number">2</span>、暂存区 :  暂存区就是文件夹 .git中的一个小部分（.git文件夹就是版本库）</span><br><span class="line"><span class="number">3</span>、版本库：工作区有一个隐藏目录.git,这个不属于工作区，这是版本库，  版本库中还有Git为我们自动创建了第一个分支master,以及指向master的一个指针HEAD</span><br><span class="line"></span><br><span class="line"><span class="number">4</span>、 把文件添加到版本库分为以下三步：</span><br><span class="line">    <span class="number">1</span>）vim Readme        <span class="comment">#工作区（Working Zone） 比如在mkdir s15_gitpro下执行创建文件命令</span></span><br><span class="line">    <span class="number">2</span>）git add           <span class="comment">#暂存区（Stage zone）</span></span><br><span class="line">    <span class="number">3</span>）git commit        <span class="comment">#代码仓库（Repository master） 只有提交到代码库才能被git管理</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-本地git基本命令"><a href="#3-本地git基本命令" class="headerlink" title="3.本地git基本命令"></a>3.本地git基本命令</h2><h4 id="1-将文件添加到仓库"><a href="#1-将文件添加到仓库" class="headerlink" title="1.将文件添加到仓库"></a>1.将文件添加到仓库</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">git add Readme              <span class="comment">#指定将Readme文件添加到暂存区</span></span><br><span class="line">git add .                   <span class="comment">#将当前目录中的所有文件全部添加到暂存区</span></span><br><span class="line">git status                  <span class="comment">#查看更改了哪些，创建了哪些，哪些没有添加到仓库，哪些添加到了仓库</span></span><br><span class="line">git status diff readme       <span class="comment">#查看readme文件具体修改了哪些</span></span><br><span class="line">git commit -m <span class="string">"commit tag"</span>   <span class="comment"># git commit告诉Git，把文件提交到仓库-m后面输入的是本次提交的说明(版本名字)</span></span><br><span class="line"></span><br><span class="line">说明：</span><br><span class="line"><span class="comment"># 执行git commit 命令时必须配置用户信息</span></span><br><span class="line">git config --<span class="keyword">global</span> user.name <span class="string">"Tom Git"</span></span><br><span class="line">git config --<span class="keyword">global</span> user.email tom@example.com</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-回滚"><a href="#2-回滚" class="headerlink" title="2.回滚"></a>2.回滚</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git log                          <span class="comment">#查看所有提交到仓库的版本记录:   git log -2</span></span><br><span class="line">git reflog                       <span class="comment">#查看所有操作记录（状态的md5值和改变的值）</span></span><br><span class="line">git reset --hard d9e0ed0         <span class="comment">#回到指定版本（d9e0ed0是创建版本的MD5值得前6位或者7位）</span></span><br><span class="line">git reset --hard HEAD^           <span class="comment">#回到上一个版本</span></span><br><span class="line">注：这样可以回到第一次提交到仓库的状态，但再使用git log看不到其他几次的md5值了</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-撤销修改"><a href="#3-撤销修改" class="headerlink" title="3.撤销修改"></a>3.撤销修改</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim Readme                       <span class="comment">#我们在Readme文件中写了一些错误的代码</span></span><br><span class="line">git add .                        <span class="comment">#然后又一不小心将文件从工作区提交到了 stage区</span></span><br><span class="line">git reset HEAD Readme            <span class="comment">#将Readme中刚提交到 stage区 的代码撤回到工作区</span></span><br><span class="line">git status                       <span class="comment">#查看目前工作区状态</span></span><br><span class="line">git checkout -- Readme           <span class="comment">#将Readme在工作区错误的代码丢弃</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-删除操作（两种方法）"><a href="#4-删除操作（两种方法）" class="headerlink" title="4.删除操作（两种方法）"></a>4.删除操作（两种方法）</h4><ul>
+<li>方法1：这种方法需要执行git  add  .</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rm Readme</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"delete file by git rm"</span></span><br><span class="line">git reset --hard HEAD^</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>方法2：这种方法可以省去执行git  add  .</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm Readme</span><br><span class="line">git commit -m <span class="string">"delete file by git rm"</span></span><br><span class="line">git reset --hard HEAD^</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注：</strong> 在没有git commit前，使用 git checkout – Readme 可以恢复删除的文件（Readme）</p>
+</blockquote>
+<h4 id="5-强制使用master覆盖本地代码"><a href="#5-强制使用master覆盖本地代码" class="headerlink" title="5.强制使用master覆盖本地代码"></a>5.强制使用master覆盖本地代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch --all</span><br><span class="line">$ git reset --hard origin/master</span><br><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="注：git更新被驳回问题"><a href="#注：git更新被驳回问题" class="headerlink" title="注：git更新被驳回问题"></a>注：git更新被驳回问题</h3><p><img src="https://img-blog.csdnimg.cn/20191219081420765.png" alt="在这里插入图片描述"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> git pull origin master --allow-unrelated-histories</span><br><span class="line"><span class="number">2.</span>git pull origin master</span><br><span class="line"><span class="number">3.</span>git init</span><br><span class="line"><span class="number">4.</span>git remote add origin ssh://git@git.limikeji.com:<span class="number">10022</span>/yanhui/webweb.git （可忽略）</span><br><span class="line"><span class="number">5.</span>git add .</span><br><span class="line"><span class="number">6.</span>git commit -m <span class="string">'testst'</span></span><br><span class="line"><span class="number">7.</span>git push -u origin master</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="git分支管理（创建与合并）"><a href="#git分支管理（创建与合并）" class="headerlink" title="git分支管理（创建与合并）"></a>git分支管理（创建与合并）</h2><blockquote>
+<p>1.分支管理的作用</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了<span class="number">50</span>%的代码，如果立刻提交，由于代码</span><br><span class="line">还没写完，不完整的代码库会导致别人不能干活了</span><br><span class="line"><span class="number">2</span>、如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。</span><br><span class="line"><span class="number">3</span>、现在有了分支，你创建了一个属于你自己的分支，别人看不到，还继续在原来的分支上正常工作</span><br><span class="line"><span class="number">4</span>、而你在自己的分支上干活，想提交就提交，直到开发完毕后，再一次性合并到原来的分支上，这样，既安全，</span><br><span class="line">又不影响别人工作</span><br><span class="line"><span class="number">5</span>、 其他版本控制系统如SVN等都有分支管理，但是用过之后你会发现，这些版本控制系统创建和切换分支比蜗</span><br><span class="line">牛还慢，简直让人无法忍受，结果分支功能成了摆设，大家都不去用</span><br><span class="line"><span class="number">6</span>、 但Git的分支是与众不同的，无论创建、切换和删除分支，Git在<span class="number">1</span>秒钟之内就能完成！无论你的版本库是<span class="number">1</span></span><br><span class="line">个文件还是<span class="number">1</span>万个文件</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>2.分支管理—-创建分支</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git branch                         <span class="comment">#查看现有分支</span></span><br><span class="line">git checkout -b dev               <span class="comment">#创建并切换到分支dev， -b参数指切换dev分支</span></span><br><span class="line">git checkout master               <span class="comment">#从dev分支切换到master</span></span><br><span class="line">git branch -D bug<span class="number">-101</span>             <span class="comment">#删除本地分支bug-101</span></span><br><span class="line"></span><br><span class="line">此时对项目进行修改</span><br><span class="line">git add .                             <span class="comment">#提交到舞台区</span></span><br><span class="line">git commit -m <span class="string">"update readme"</span>         <span class="comment">#提交到仓库</span></span><br><span class="line">git push origin dev                   <span class="comment">#将跟新内容提交到分支dev中而不是master中</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>3.如何将分支dev中的代码合并到主分支master中</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git checkout master           <span class="comment">#从dev分支切换到master</span></span><br><span class="line">git pull                      <span class="comment">#将master上的项目下载到本地</span></span><br><span class="line">git merge dev                 <span class="comment">#在master上执行这条命令，试图合并master和dev（报错，master更新了）</span></span><br><span class="line"></span><br><span class="line">vim Readme                     <span class="comment">#将不一致的地方手动合并</span></span><br><span class="line">git add .</span><br><span class="line">git push origin master         <span class="comment">#手动合并后就可以将dev分支上修改的东西上传到GitHub的master中了</span></span><br><span class="line">git log –graph                 <span class="comment">#查看从什么地方出现的分支</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>4.分支取名规范</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、方法<span class="number">1</span>： 使用人名作为分支名（传统开发每个人负责一个功能模块）</span><br><span class="line"><span class="number">2</span>、方法<span class="number">2</span>： 根据功能模块设置分支名（如： feature<span class="number">-100</span> hotfix<span class="number">-99</span>）</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>5.全局dev分支（相当于上生产环境前的测试分支）</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、master是不能再上面开发的（master必须是一个稳定版本）</span><br><span class="line"><span class="number">2</span>、所以会有一个全局dev分支，这样就有三种，master,dev,和每个人自己的分支</span><br><span class="line"><span class="number">3</span>、只有在全局dev中没问题后才会真正pull到master中</span><br></pre></td></tr></table></figure>
+
+<h2 id="bug分支-git-stash"><a href="#bug分支-git-stash" class="headerlink" title="bug分支(git stash)"></a>bug分支(git stash)</h2><h3 id="1-git-stash-使用场景"><a href="#1-git-stash-使用场景" class="headerlink" title="1.git stash 使用场景"></a>1.git stash 使用场景</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、当正在其它分支写代码时突然有一个在master上发现一个bug需要立刻修改</span><br><span class="line"><span class="number">2</span>、这时当然你可以将正在修改的内容先提交到自己的分支中再切换到bug分支，但比较麻烦</span><br><span class="line"><span class="number">3</span>、这里就可以执行git stash 命令可以将现在这个状态临时保存起来</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-git-stash使用"><a href="#2-git-stash使用" class="headerlink" title="2.git stash使用"></a>2.git stash使用</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、在dev工作区正在写东西，突然有个bug需要立刻修改</span><br><span class="line"></span><br><span class="line">vim Readme              <span class="comment">#突然出现了一个bug</span></span><br><span class="line">git stash               <span class="comment">#将dev中未保存的文件放到一个临时区（以免带到了bug分支中）</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span>、切换到bug<span class="number">-100</span>分支，修复bug，并提交到本地仓库</span><br><span class="line"></span><br><span class="line">git checkout -b bug<span class="number">-100</span>             <span class="comment">#创建并切换到bug-100分支</span></span><br><span class="line">vim Readme                          <span class="comment">#在bug-100分支中修复bug</span></span><br><span class="line">git add .                           <span class="comment">#将修改内容保存到bug-100分支的舞台区</span></span><br><span class="line">git commit -m <span class="string">'commit-100-bug'</span>      <span class="comment">#提交到仓库</span></span><br><span class="line"></span><br><span class="line"><span class="number">3</span>、切换到master合并bug<span class="number">-100</span>并提交到GitHub</span><br><span class="line"></span><br><span class="line">git checkout master             <span class="comment">#切换到master</span></span><br><span class="line">git merge bug<span class="number">-100</span>               <span class="comment">#合并master和bug-100分支</span></span><br><span class="line">git push origin master          <span class="comment">#将修改后的内容推送到GitHub上（即可更新master）</span></span><br><span class="line"></span><br><span class="line"><span class="number">4</span>、再次切换到dev分支，恢复以前的状态</span><br><span class="line"></span><br><span class="line">git checkout dev              <span class="comment">#再次切换到dev分支</span></span><br><span class="line">git status                    <span class="comment">#dev分支的工作区没有东西</span></span><br><span class="line">more Readme                   <span class="comment">#发现以前在dev工作区正在修改未提交到本地仓库的东西没有了</span></span><br><span class="line">git stash list                <span class="comment">#查看使用git stash 临时保存的文件</span></span><br><span class="line">git stash apply               <span class="comment">#恢复上次使用git stash 临时保存的文件</span></span><br><span class="line">git status                    <span class="comment">#可以看到又回到了，切换到bug-100分支前的修改状态了</span></span><br><span class="line"></span><br><span class="line"><span class="number">5</span>、git stash的其他操作</span><br><span class="line"></span><br><span class="line">git stash drop                <span class="comment">#删除最久的那个使用git stash 保存的临时状态</span></span><br><span class="line">git stash apply stash@&#123;<span class="number">0</span>&#125;     <span class="comment">#指定恢复到那个临时状态</span></span><br><span class="line">git stash pop                 <span class="comment">#恢复并删除上一个临时状态</span></span><br><span class="line"></span><br><span class="line">注<span class="number">1</span>：git stash apply恢复，恢复后，stash内容并不删除，你需要使用命令git stash drop来删除</span><br><span class="line">注<span class="number">2</span>：另一种方式是使用git stash pop,恢复的同时把stash内容也删除了。</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/19/devops/" rel="next" title="devops">
+                <i class="fa fa-chevron-left"></i> devops
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/19/%E9%85%8D%E7%BD%AE%E5%85%AC%E9%92%A5/" rel="prev" title="配置公钥">
+                配置公钥 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Mr.刘" />
+          <p class="site-author-name" itemprop="name">Mr.刘</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-创建git版本库"><span class="nav-number">1.</span> <span class="nav-text">1.创建git版本库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-工作区、暂存区、代码仓库"><span class="nav-number">2.</span> <span class="nav-text">2.工作区、暂存区、代码仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-本地git基本命令"><span class="nav-number">3.</span> <span class="nav-text">3.本地git基本命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-将文件添加到仓库"><span class="nav-number">3.0.1.</span> <span class="nav-text">1.将文件添加到仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-回滚"><span class="nav-number">3.0.2.</span> <span class="nav-text">2.回滚</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-撤销修改"><span class="nav-number">3.0.3.</span> <span class="nav-text">3.撤销修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-删除操作（两种方法）"><span class="nav-number">3.0.4.</span> <span class="nav-text">4.删除操作（两种方法）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-强制使用master覆盖本地代码"><span class="nav-number">3.0.5.</span> <span class="nav-text">5.强制使用master覆盖本地代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注：git更新被驳回问题"><span class="nav-number">3.1.</span> <span class="nav-text">注：git更新被驳回问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git分支管理（创建与合并）"><span class="nav-number">4.</span> <span class="nav-text">git分支管理（创建与合并）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bug分支-git-stash"><span class="nav-number">5.</span> <span class="nav-text">bug分支(git stash)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-git-stash-使用场景"><span class="nav-number">5.1.</span> <span class="nav-text">1.git stash 使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-git-stash使用"><span class="nav-number">5.2.</span> <span class="nav-text">2.git stash使用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.刘</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

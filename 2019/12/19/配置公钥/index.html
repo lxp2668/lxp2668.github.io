@@ -94,15 +94,20 @@
 
 
 
-<meta name="description" content="cookie12345678910111213141516from django.shortcuts import render,redirectfrom django.http import HttpResponsefrom .models import *def index(request):    return HttpResponse(&amp;apos;&amp;lt;h1&amp;gt;hello&amp;lt;&#x2F;h1&amp;gt;">
+<meta name="description" content="windows配置 这个配置方法适用于gitee、github等等  1.使用命令生成公钥和私钥（在git命令行中执行）12ssh-keygen.exe               #生成一对公钥和私钥C:\Users\lenovo\.ssh           #这里是生成的秘钥地址  2.将公钥上传到github中  3.更改本地push方式为ssh 配置完公钥后还需要将GitHub项目的pu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="session和cookie">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;26&#x2F;session%E5%92%8Ccookie&#x2F;index.html">
+<meta property="og:title" content="配置公钥">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;19&#x2F;%E9%85%8D%E7%BD%AE%E5%85%AC%E9%92%A5&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="cookie12345678910111213141516from django.shortcuts import render,redirectfrom django.http import HttpResponsefrom .models import *def index(request):    return HttpResponse(&amp;apos;&amp;lt;h1&amp;gt;hello&amp;lt;&#x2F;h1&amp;gt;">
+<meta property="og:description" content="windows配置 这个配置方法适用于gitee、github等等  1.使用命令生成公钥和私钥（在git命令行中执行）12ssh-keygen.exe               #生成一对公钥和私钥C:\Users\lenovo\.ssh           #这里是生成的秘钥地址  2.将公钥上传到github中  3.更改本地push方式为ssh 配置完公钥后还需要将GitHub项目的pu">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-03T09:09:48.876Z">
+<meta property="og:image" content="c:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576726023142.png">
+<meta property="og:image" content="c:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576726050375.png">
+<meta property="og:image" content="c:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576726123777.png">
+<meta property="og:image" content="c:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576726402686.png">
+<meta property="og:updated_time" content="2019-12-19T03:33:27.034Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576726023142.png">
 
 
 
@@ -131,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/11/26/session和cookie/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/12/19/配置公钥/"/>
 
 
 
 
 
-  <title>session和cookie | Hexo</title>
+  <title>配置公钥 | Hexo</title>
   
 
 
@@ -260,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/26/session%E5%92%8Ccookie/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/%E9%85%8D%E7%BD%AE%E5%85%AC%E9%92%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mr.刘">
@@ -277,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">session和cookie</h1>
+          <h1 class="post-title" itemprop="name headline">配置公钥</h1>
         
 
         <div class="post-meta">
@@ -289,8 +294,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-26T17:21:17+08:00">
-                2019-11-26
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-19T11:21:58+08:00">
+                2019-12-19
               </time>
             
 
@@ -327,12 +332,30 @@
       
 
       
-        <h1 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render,redirect</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">'&lt;h1&gt;hello&lt;/h1&gt;'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">set_cookie</span><span class="params">(request)</span>:</span></span><br><span class="line">    cookie = HttpResponse(<span class="string">'这是个cookie测试'</span>)</span><br><span class="line">    cookie.set_cookie(<span class="string">'name'</span>,<span class="string">'zhangsan'</span>)</span><br><span class="line">    <span class="keyword">return</span> cookie</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_cookie</span><span class="params">(request)</span>:</span></span><br><span class="line">    cookie = request.COOKIES.get(<span class="string">'name'</span>)</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(cookie)</span><br></pre></td></tr></table></figure>
+        <h1 id="windows配置"><a href="#windows配置" class="headerlink" title="windows配置"></a>windows配置</h1><blockquote>
+<p>这个配置方法适用于gitee、github等等</p>
+</blockquote>
+<h3 id="1-使用命令生成公钥和私钥（在git命令行中执行）"><a href="#1-使用命令生成公钥和私钥（在git命令行中执行）" class="headerlink" title="1.使用命令生成公钥和私钥（在git命令行中执行）"></a>1.使用命令生成公钥和私钥（在git命令行中执行）</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen.exe               <span class="comment">#生成一对公钥和私钥</span></span><br><span class="line">C:\Users\lenovo\.ssh           <span class="comment">#这里是生成的秘钥地址</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="session"><a href="#session" class="headerlink" title="session"></a>session</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render,redirect</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">'GET'</span>:</span><br><span class="line">        context = &#123;&#125;</span><br><span class="line">        <span class="keyword">return</span> render(request,<span class="string">'login.html'</span>,context)</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:</span><br><span class="line">        info = dict(request.POST)</span><br><span class="line">        print(info)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            user = User.objects.get(username=info[<span class="string">'username'</span>][<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            context = &#123;<span class="string">'mes'</span>:<span class="string">'用户名或密码不正确'</span>&#125;</span><br><span class="line">            <span class="keyword">return</span> render(request,<span class="string">'login.html'</span>,context)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> user.password == info[<span class="string">'password'</span>][<span class="number">0</span>]:</span><br><span class="line">                request.session[<span class="string">'username'</span>] = user.username</span><br><span class="line">                <span class="keyword">return</span> HttpResponse(<span class="string">'欢迎&#123;&#125;登录'</span>.format(request.session[<span class="string">'username'</span>]))</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                context = &#123;<span class="string">'mes'</span>:<span class="string">'用户名或密码不正确'</span>&#125;</span><br><span class="line">                <span class="keyword">return</span> render(request,<span class="string">'login.html'</span>,context)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>session 测试<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">set_session</span><span class="params">(request)</span>:</span></span><br><span class="line">    request.session[<span class="string">'username'</span>] = <span class="string">'zhangsan'</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">'ok'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_session</span><span class="params">(request)</span>:</span></span><br><span class="line">    mes = request.session[<span class="string">'username'</span>]</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">'您存入的session值是&#123;&#125;'</span>.format(mes))</span><br></pre></td></tr></table></figure></li>
+<h3 id="2-将公钥上传到github中"><a href="#2-将公钥上传到github中" class="headerlink" title="2.将公钥上传到github中"></a>2.将公钥上传到github中</h3><p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576726023142.png" alt="1576726023142"></p>
+<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576726050375.png" alt="1576726050375"></p>
+<h3 id="3-更改本地push方式为ssh"><a href="#3-更改本地push方式为ssh" class="headerlink" title="3.更改本地push方式为ssh"></a>3.更改本地push方式为ssh</h3><ul>
+<li>配置完公钥后还需要将GitHub项目的push方式改成ssh</li>
 </ul>
+<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576726123777.png" alt="1576726123777"></p>
+<ul>
+<li>更改本地push方式为ssh</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>） vim .git/config</span><br><span class="line"><span class="number">2</span>） 将已有的https的路径替换成ssh模式，即上面复制的地址</span><br><span class="line">    <span class="comment">#url = https://github.com/Tom7481079/s15_proj.git</span></span><br><span class="line">    url = git@github.com:Tom7481079/s15_proj.git</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>此时再执行品push命令时就不会再让输入用户名和密码了</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
+<h1 id="Linux配置"><a href="#Linux配置" class="headerlink" title="Linux配置"></a>Linux配置</h1><h4 id="1-在centos系统中创建密钥对"><a href="#1-在centos系统中创建密钥对" class="headerlink" title="1.在centos系统中创建密钥对"></a>1.在centos系统中创建密钥对</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen                          <span class="comment">#给当前用户创建公钥私钥</span></span><br><span class="line">vim ~/.ssh/id_rsa.pub               <span class="comment">#将当前用户公钥放到GitHub对应项目中</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-将生成的公钥放到github指定项目中"><a href="#2-将生成的公钥放到github指定项目中" class="headerlink" title="2.将生成的公钥放到github指定项目中"></a>2.将生成的公钥放到github指定项目中</h4><p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1576726402686.png" alt="1576726402686"></p>
 
       
     </div>
@@ -357,8 +380,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/26/%E5%AF%8C%E6%96%87%E6%9C%AC%E9%85%8D%E7%BD%AE/" rel="next" title="富文本配置">
-                <i class="fa fa-chevron-left"></i> 富文本配置
+              <a href="/2019/12/19/git%E4%BD%BF%E7%94%A8/" rel="next" title="git使用">
+                <i class="fa fa-chevron-left"></i> git使用
               </a>
             
           </div>
@@ -366,10 +389,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/12/19/vue-element-admin/" rel="prev" title="vue-element-admin">
-                vue-element-admin <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -485,7 +504,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cookie"><span class="nav-number">1.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#session"><span class="nav-number">2.</span> <span class="nav-text">session</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#windows配置"><span class="nav-number">1.</span> <span class="nav-text">windows配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-使用命令生成公钥和私钥（在git命令行中执行）"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.使用命令生成公钥和私钥（在git命令行中执行）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-将公钥上传到github中"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.将公钥上传到github中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-更改本地push方式为ssh"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.更改本地push方式为ssh</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux配置"><span class="nav-number">2.</span> <span class="nav-text">Linux配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-在centos系统中创建密钥对"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">1.在centos系统中创建密钥对</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-将生成的公钥放到github指定项目中"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">2.将生成的公钥放到github指定项目中</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
